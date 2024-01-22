@@ -7,20 +7,20 @@ provider "aws" {
 }
 
 module "my_vpc" {
-  source     = "./modules/vpc"
+  source     = "./modules/aws/vpc"
   vpc_name   = "MyVPC"
   cidr_block = "10.0.0.0/16"  # Replace with your desired CIDR block for VPC
 }
 
 module "my_subnet" {
-  source       = "./modules/subnet"
+  source       = "./modules/aws/subnet"
   subnet_name  = "MySubnet"
   cidr_block   = "10.0.1.0/24"  # Replace with your desired CIDR block for Subnet
   vpc_id       = module.my_vpc.aws_vpc.main.id
 }
 
 module "my_security_group" {
-  source                = "./modules/security_group"
+  source                = "./modules/aws/security_group"
   security_group_name   = "MySecurityGroup"
   vpc_id                = module.my_vpc.aws_vpc.main.id
 }

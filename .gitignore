@@ -2,3 +2,6 @@
 
 # Ignore Terraform tfvars files
 *.tfvars
+# Ignore hcl files
+*.hcl
+*.terraform/
