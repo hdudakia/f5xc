@@ -1,12 +1,27 @@
-resource "aws_subnet" "subnet" {
-  for_each                = {for k, v in var.aws_vpc_subnets :  k => v}
-  vpc_id                  = var.aws_vpc_id
-  cidr_block              = each.value.cidr_block
-  map_public_ip_on_launch = each.value.map_public_ip_on_launch
-  availability_zone       = each.value.availability_zone
-  tags                    = merge({ Name = each.value.name, Owner = each.value.owner }, each.value.custom_tags)
+# modules/subnet/main.tf
 
-  lifecycle {
-    ignore_changes = [tags]
+variable "subnet_name" {
+  type        = string
+  description = "The name of the subnet"
+}
+
+variable "cidr_block" {
+  type        = string
+  description = "The CIDR block for the subnet"
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "The ID of the associated VPC"
+}
+
+resource "aws_subnet" "main" {
+  vpc_id                  = var.vpc_id
+  cidr_block              = var.cidr_block
+  availability_zone       = "us-east-1a"  # Change to your desired availability zone
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = var.subnet_name
   }
 }

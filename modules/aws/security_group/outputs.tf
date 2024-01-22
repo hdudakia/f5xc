@@ -1,9 +1,6 @@
-output "aws_security_group" {
-  value = {
-    id      = aws_security_group.sg.id
-    name    = aws_security_group.sg.name
-    egress  = aws_security_group.sg.egress
-    ingress = aws_security_group.sg.ingress
-    vpc_id  = aws_security_group.sg.vpc_id
-  }
+# modules/security_group/outputs.tf
+
+output "security_group_id" {
+  description = "The ID of the created security group"
+  value       = aws_security_group.main.id
 }

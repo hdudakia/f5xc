@@ -1,14 +1,16 @@
-variable "aws_vpc_id" {
-  type = string
+# modules/subnet/variables.tf
+
+variable "subnet_name" {
+  type        = string
+  description = "The name of the subnet"
 }
 
-variable "aws_vpc_subnets" {
-  type = list(object({
-    name                    = string
-    owner                   = string
-    cidr_block              = string
-    custom_tags             = map(string)
-    availability_zone       = string
-    map_public_ip_on_launch = bool
-  }))
+variable "cidr_block" {
+  type        = string
+  description = "The CIDR block for the subnet"
+}
+
+variable "vpc_id" {
+  type        = string
+  description = "The ID of the associated VPC"
 }
