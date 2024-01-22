@@ -5,3 +5,5 @@
 # Ignore hcl files
 *.hcl
 *.terraform/
+*.tfstate
+*.tfstate.backup
