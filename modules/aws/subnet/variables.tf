@@ -5,7 +5,7 @@ variable "subnet_name" {
   description = "The name of the subnet"
 }
 
-variable "cidr_block" {
+variable "subnet_cidr" {
   type        = string
   description = "The CIDR block for the subnet"
 }

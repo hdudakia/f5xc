@@ -7,5 +7,5 @@ output "subnet_id" {
 
 output "subnet_cidr_block" {
   description = "The CIDR block of the created subnet"
-  value       = aws_subnet.main.cidr_block
+  value       = aws_subnet.main.id
 }

@@ -1,38 +1,24 @@
 provider "aws" {
   region     = "us-east-1"  # Change to your desired AWS region
-
-  # AWS credentials (replace with your own credentials)
-  access_key = "your_access_key"
-  secret_key = "your_secret_key"
+  access_key = var.access_key
+  secret_key = var.secret_key
 }
 
 module "my_vpc" {
   source     = "./modules/aws/vpc"
-  vpc_name   = "MyVPC"
-  cidr_block = "10.0.0.0/16"  # Replace with your desired CIDR block for VPC
+  vpc_name   = var.vpc_name
+  vpc_cidr = var.vpc_cidr
 }
 
 module "my_subnet" {
   source       = "./modules/aws/subnet"
-  subnet_name  = "MySubnet"
-  cidr_block   = "10.0.1.0/24"  # Replace with your desired CIDR block for Subnet
-  vpc_id       = module.my_vpc.aws_vpc.main.id
+  subnet_name  = var.subnet_name
+  subnet_cidr   = var.subnet_cidr
+  vpc_id       = module.my_vpc.vpc_id
 }
 
 module "my_security_group" {
   source                = "./modules/aws/security_group"
-  security_group_name   = "MySecurityGroup"
-  vpc_id                = module.my_vpc.aws_vpc.main.id
-}
-
-output "vpc_id" {
-  value = module.my_vpc.aws_vpc.main.id
-}
-
-output "subnet_id" {
-  value = module.my_subnet.subnet_id
-}
-
-output "security_group_id" {
-  value = module.my_security_group.security_group_id
+  security_group_name   = var.security_group_name
+  vpc_id                = module.my_vpc.vpc_id
 }
