@@ -28,6 +28,9 @@ variable "vpc_cidr" {
   description = "The CIDR block for the VPC"
 }
 
+variable "region" {
+  
+}
 
 variable "access_key" {}
 variable "secret_key" {}
