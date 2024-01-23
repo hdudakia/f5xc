@@ -1,5 +1,4 @@
 //AWS Resources
-
 provider "aws" {
   region     = var.region
   access_key = var.access_key
@@ -28,11 +27,7 @@ module "my_security_group" {
   depends_on          = [module.my_subnet]
 }
 
-
-
-
 // F5 Site
-
 terraform {
   required_providers {
     volterra = {
