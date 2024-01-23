@@ -14,3 +14,7 @@ variable "vpc_id" {
   type        = string
   description = "The ID of the associated VPC"
 }
+
+variable "availability_zone" {
+  type = string
+}

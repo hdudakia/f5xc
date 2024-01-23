@@ -1,45 +1,3 @@
-// AWS 
-
-variable "security_group_name" {
-  type        = string
-  description = "The name of the security group"
-}
-
-variable "subnet_name" {
-  type        = string
-  description = "The name of the subnet"
-}
-
-variable "availability_zone" {
-  type = string
-}
-
-variable "subnet_cidr" {
-  type        = string
-  description = "The CIDR block for the subnet"
-}
-
-variable "vpc_name" {
-  type        = string
-  description = "The name of the VPC"
-}
-
-variable "vpc_cidr" {
-  type        = string
-  description = "The CIDR block for the VPC"
-}
-
-variable "region" {
-  
-}
-
-variable "access_key" {}
-variable "secret_key" {}
-
-
-// F5
-
-
 variable "f5xc_api_url" {}
 variable "f5xc_aws_cred" {}
 variable "f5xc_namespace" {}
@@ -72,7 +30,7 @@ variable "f5xc_aws_vpc_primary_ipv4" {
 }
 
 variable "f5xc_aws_vpc_az_nodes" {
-  type = string
+  type = number
 }
 
 variable "f5xc_aws_ce_gw_type" {
@@ -184,5 +142,4 @@ variable "is_sensitive" {
   default = false
 }
 
-
-variable "p12_file" {}
+variable "f5xc_aws_vpc_local_existing_subnet_id" {}
