@@ -44,7 +44,7 @@ variable "f5xc_aws_ce_gw_type" {
 }
 
 variable "f5xc_aws_ce_certified_hw" {
-  type    = map(string)
+  type = map(string)
   default = {
     multi_nic  = "aws-byol-multi-nic-voltmesh"
     single_nic = "aws-byol-voltmesh"
